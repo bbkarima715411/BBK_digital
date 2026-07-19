@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Django
+*.log
+db.sqlite3
+media/*
+!media/.gitkeep
+!media/portfolio/
+media/portfolio/*
+!media/portfolio/.gitkeep
+!media/products/
+media/products/*
+!media/products/.gitkeep
+staticfiles/
+
+# Environnement
+.env
+
+# IDE / OS
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
