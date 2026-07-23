@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}Contact — BBK Digital{% endblock %}
+{% block meta_description %}Contactez BBK Digital pour un site web, une application, un outil métier ou une automatisation. Réponse dans les meilleurs délais.{% endblock %}
+
+{% block content %}
+<section class="page-header" aria-labelledby="contact-title">
+    <h1 id="contact-title">Contact</h1>
+    <p class="page-intro">
+        Un site à créer, une application à concevoir, un processus à
+        automatiser ? Décrivez votre besoin, simplement.
+    </p>
+</section>
+
+<section class="contact-layout" aria-label="Formulaire et informations de contact">
+    <div class="contact-form-area">
+        {% comment %}
+        Le formulaire Django (validation, enregistrement, envoi d'e-mail)
+        sera branché à l'étape fonctionnelle. Structure visuelle uniquement.
+        {% endcomment %}
+        <form class="contact-form" method="post" action="{% url 'contact:form' %}">
+            {% csrf_token %}
+            <div class="form-field">
+                <label for="id_name">Nom</label>
+                <input type="text" id="id_name" name="name" required autocomplete="name">
+            </div>
+            <div class="form-field">
+                <label for="id_email">Adresse e-mail</label>
+                <input type="email" id="id_email" name="email" required autocomplete="email">
+            </div>
+            <div class="form-field">
+                <label for="id_company">Entreprise (facultatif)</label>
+                <input type="text" id="id_company" name="company" autocomplete="organization">
+            </div>
+            <div class="form-field">
+                <label for="id_subject">Sujet</label>
+                <input type="text" id="id_subject" name="subject" required>
+            </div>
+            <div class="form-field">
+                <label for="id_message">Message</label>
+                <textarea id="id_message" name="message" rows="8" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Envoyer le message</button>
+        </form>
+    </div>
+
+    <aside class="contact-info" aria-label="Informations complémentaires">
+        <h2>Types de projets</h2>
+        <p>
+            BBK Digital accompagne la création de sites web professionnels,
+            d'applications web, d'outils métiers sur mesure et
+            d'automatisations. Les demandes de maintenance ou d'évolution de
+            solutions existantes sont également étudiées.
+        </p>
+
+        <h2>Adresse de contact</h2>
+        <p>
+            <a href="mailto:bbk.digital.contact@gmail.com">bbk.digital.contact@gmail.com</a>
+        </p>
+
+        <h2>Délai de réponse</h2>
+        <p>
+            Chaque message reçoit une réponse, généralement sous quelques
+            jours ouvrés.
+        </p>
+    </aside>
+</section>
+{% endblock %}

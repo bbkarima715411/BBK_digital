@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Erreur interne — BBK Digital{% endblock %}
+{% block meta_description %}Une erreur interne est survenue.{% endblock %}
+{% block extra_meta %}<meta name="robots" content="noindex, nofollow">{% endblock %}
+
+{% block content %}
+<section class="error-page" aria-labelledby="error-title">
+    <h1 id="error-title">Une erreur est survenue</h1>
+    <p>
+        Le site a rencontré un problème technique momentané. Vous pouvez
+        réessayer dans quelques instants.
+    </p>
+    <a class="btn btn-primary" href="{% url 'core:home' %}">Retourner à l'accueil</a>
+</section>
+{% endblock %}

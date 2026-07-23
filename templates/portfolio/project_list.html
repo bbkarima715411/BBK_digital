@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Réalisations — BBK Digital{% endblock %}
+{% block meta_description %}Les réalisations de BBK Digital : sites web, applications et outils numériques conçus pour des besoins réels.{% endblock %}
+
+{% block content %}
+<section class="page-header" aria-labelledby="portfolio-title">
+    <h1 id="portfolio-title">Réalisations</h1>
+    <p class="page-intro">
+        Une sélection de projets menés par le studio, du site vitrine à
+        l'outil métier.
+    </p>
+</section>
+
+<section class="project-list" aria-label="Liste des réalisations">
+    {% if projects %}
+    <ul class="card-grid">
+        {% for project in projects %}
+        <li class="card">
+            <article aria-labelledby="project-{{ project.slug }}">
+                {% if project.featured_image %}
+                <img src="{{ project.featured_image.url }}" alt="Aperçu du projet {{ project.title }}" loading="lazy">
+                {% endif %}
+                <h2 id="project-{{ project.slug }}">{{ project.title }}</h2>
+                <p class="card-meta">{{ project.category.name }} — {{ project.get_status_display }}</p>
+                <p>{{ project.short_description }}</p>
+                {% if project.technologies.all %}
+                <ul class="tag-list" aria-label="Technologies utilisées">
+                    {% for technology in project.technologies.all %}
+                    <li>{{ technology.name }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% if project.project_url %}
+                <p><a href="{{ project.project_url }}" rel="noopener" target="_blank">Voir le projet {{ project.title }}</a></p>
+                {% endif %}
+            </article>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p class="empty-state">
+        Les premières réalisations du studio seront publiées ici. Vous avez
+        un projet ? <a href="{% url 'contact:form' %}">Discutons-en</a>.
+    </p>
+    {% endif %}
+</section>
+{% endblock %}

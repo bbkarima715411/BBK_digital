@@ -1,11 +1,16 @@
 """Vues de l'application products."""
-from django.views.generic import TemplateView
+from django.views.generic import ListView
+
+from .models import Product
 
 
-class ProductListView(TemplateView):
-    """Liste des produits numériques BBK Digital.
+class ProductListView(ListView):
+    """Liste des produits publiés, dans l'ordre d'affichage défini."""
 
-    Deviendra une ListView branchée sur le modèle Product à l'étape 4.
-    """
+    model = Product
+    template_name = "products/product_list.html"
+    context_object_name = "products"
 
-    template_name = "pages/products.html"
+    def get_queryset(self):
+        """Seuls les produits publiés sont affichés publiquement."""
+        return Product.objects.filter(is_published=True)

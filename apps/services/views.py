@@ -1,11 +1,16 @@
 """Vues de l'application services."""
-from django.views.generic import TemplateView
+from django.views.generic import ListView
+
+from .models import Service
 
 
-class ServiceListView(TemplateView):
-    """Liste des services proposés par le studio.
+class ServiceListView(ListView):
+    """Liste des services actifs, dans l'ordre d'affichage défini."""
 
-    Deviendra une ListView branchée sur le modèle Service à l'étape 4.
-    """
+    model = Service
+    template_name = "services/service_list.html"
+    context_object_name = "services"
 
-    template_name = "pages/services.html"
+    def get_queryset(self):
+        """Seuls les services actifs sont affichés publiquement."""
+        return Service.objects.filter(is_active=True)

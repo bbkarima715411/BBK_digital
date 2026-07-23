@@ -8,4 +8,4 @@ class ContactView(TemplateView):
     Deviendra une FormView (formulaire sécurisé + envoi SMTP) à l'étape 7.
     """
 
-    template_name = "pages/contact.html"
+    template_name = "contact/contact.html"

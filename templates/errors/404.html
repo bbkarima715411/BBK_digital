@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Page introuvable — BBK Digital{% endblock %}
+{% block meta_description %}La page demandée n'existe pas ou n'existe plus.{% endblock %}
+{% block extra_meta %}<meta name="robots" content="noindex, nofollow">{% endblock %}
+
+{% block content %}
+<section class="error-page" aria-labelledby="error-title">
+    <h1 id="error-title">Page introuvable</h1>
+    <p>
+        La page demandée n'existe pas ou n'existe plus. Elle a peut-être été
+        déplacée lors d'une mise à jour du site.
+    </p>
+    <a class="btn btn-primary" href="{% url 'core:home' %}">Retourner à l'accueil</a>
+</section>
+{% endblock %}

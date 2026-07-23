@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}À propos — BBK Digital{% endblock %}
+{% block meta_description %}Découvrez BBK Digital, studio de conception de solutions numériques : sa vision, sa manière de travailler et ses valeurs.{% endblock %}
+
+{% block content %}
+<section class="page-header" aria-labelledby="about-title">
+    <h1 id="about-title">À propos de BBK Digital</h1>
+    <p class="page-intro">
+        Un studio de conception de solutions numériques utiles, élégantes
+        et adaptées aux besoins réels.
+    </p>
+</section>
+
+<section class="about-vision" aria-labelledby="vision-title">
+    <h2 id="vision-title">La vision</h2>
+    <p>
+        Le numérique doit simplifier, jamais compliquer. BBK Digital est né
+        de cette conviction : concevoir des outils qui rendent un vrai
+        service, du site vitrine soigné à l'application métier qui fait
+        gagner du temps chaque jour.
+    </p>
+</section>
+
+<section class="about-method" aria-labelledby="method-title">
+    <h2 id="method-title">La manière de travailler</h2>
+    <p>
+        Chaque projet commence par l'écoute du besoin. Vient ensuite une
+        proposition claire, sans jargon, puis une réalisation progressive
+        avec des points d'étape réguliers. Le code produit est propre,
+        documenté et pensé pour évoluer sur plusieurs années.
+    </p>
+</section>
+
+<section class="about-values" aria-labelledby="values-title">
+    <h2 id="values-title">Les valeurs</h2>
+    <ul class="values-list">
+        <li>
+            <h3>Professionnalisme</h3>
+            <p>Des engagements tenus et un travail soigné à chaque étape.</p>
+        </li>
+        <li>
+            <h3>Simplicité</h3>
+            <p>Des solutions compréhensibles, faciles à utiliser et à maintenir.</p>
+        </li>
+        <li>
+            <h3>Confiance</h3>
+            <p>Une communication transparente sur les délais, les coûts et les choix techniques.</p>
+        </li>
+        <li>
+            <h3>Accessibilité</h3>
+            <p>Des interfaces utilisables par tous, sur tous les appareils.</p>
+        </li>
+    </ul>
+</section>
+
+<section class="about-positioning" aria-labelledby="positioning-title">
+    <h2 id="positioning-title">Un studio de solutions numériques</h2>
+    <p>
+        Au-delà des projets réalisés pour ses clients, BBK Digital développe
+        ses propres produits numériques destinés aux familles, aux
+        entreprises et au monde de l'éducation. L'objectif reste le même :
+        créer des outils simples et réellement utiles.
+    </p>
+    <a class="btn btn-primary" href="{% url 'contact:form' %}">Échanger sur votre projet</a>
+</section>
+{% endblock %}

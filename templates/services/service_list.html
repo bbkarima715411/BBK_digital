@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Services — BBK Digital{% endblock %}
+{% block meta_description %}Les services de BBK Digital : création de sites, applications web, développement sur mesure, automatisation, maintenance et SaaS.{% endblock %}
+
+{% block content %}
+<section class="page-header" aria-labelledby="services-title">
+    <h1 id="services-title">Services</h1>
+    <p class="page-intro">
+        Du site vitrine à l'outil métier sur mesure, chaque service est
+        pensé pour répondre à un besoin réel, avec simplicité et exigence.
+    </p>
+</section>
+
+<section class="service-list" aria-label="Liste des services">
+    {% if services %}
+    <ul class="card-grid">
+        {% for service in services %}
+        <li class="card">
+            <article aria-labelledby="service-{{ service.slug }}">
+                {% if service.icon %}<span class="card-icon {{ service.icon }}" aria-hidden="true"></span>{% endif %}
+                <h2 id="service-{{ service.slug }}">{{ service.title }}</h2>
+                <p>{{ service.short_description }}</p>
+            </article>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p class="empty-state">
+        Le détail des services sera publié très prochainement. En attendant,
+        vous pouvez décrire votre besoin via la <a href="{% url 'contact:form' %}">page de contact</a>.
+    </p>
+    {% endif %}
+</section>
+
+<section class="page-cta" aria-labelledby="services-cta-title">
+    <h2 id="services-cta-title">Besoin d'un accompagnement ?</h2>
+    <p>Chaque projet mérite une réponse adaptée. Parlons du vôtre.</p>
+    <a class="btn btn-primary" href="{% url 'contact:form' %}">Prendre contact</a>
+</section>
+{% endblock %}

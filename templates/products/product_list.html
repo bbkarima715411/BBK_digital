@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Produits — BBK Digital{% endblock %}
+{% block meta_description %}Les produits numériques BBK Digital : applications éducatives, familiales et outils destinés aux entreprises.{% endblock %}
+
+{% block content %}
+<section class="page-header" aria-labelledby="products-title">
+    <h1 id="products-title">Produits numériques</h1>
+    <p class="page-intro">
+        BBK Digital conçoit ses propres produits : des applications et des
+        outils destinés aux familles, aux entreprises et à l'éducation.
+    </p>
+</section>
+
+<section class="product-list" aria-label="Liste des produits">
+    {% if products %}
+    <ul class="card-grid">
+        {% for product in products %}
+        <li class="card">
+            <article aria-labelledby="product-{{ product.slug }}">
+                {% if product.featured_image %}
+                <img src="{{ product.featured_image.url }}" alt="Visuel du produit {{ product.name }}" loading="lazy">
+                {% endif %}
+                <h2 id="product-{{ product.slug }}">{{ product.name }}</h2>
+                <p class="card-meta">{{ product.get_product_type_display }} — {{ product.get_status_display }}</p>
+                <p>{{ product.short_description }}</p>
+                {% if product.external_url %}
+                <p><a href="{{ product.external_url }}" rel="noopener" target="_blank">Découvrir {{ product.name }}</a></p>
+                {% endif %}
+            </article>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p class="empty-state">
+        Les premiers produits sont en cours de conception et seront
+        présentés ici dès leur publication.
+    </p>
+    {% endif %}
+</section>
+{% endblock %}

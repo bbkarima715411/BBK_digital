@@ -1,11 +1,20 @@
 """Vues de l'application portfolio."""
-from django.views.generic import TemplateView
+from django.views.generic import ListView
+
+from .models import Project
 
 
-class ProjectListView(TemplateView):
-    """Liste des réalisations du studio.
+class ProjectListView(ListView):
+    """Liste des réalisations publiées, dans l'ordre d'affichage défini."""
 
-    Deviendra une ListView branchée sur le modèle Project à l'étape 4.
-    """
+    model = Project
+    template_name = "portfolio/project_list.html"
+    context_object_name = "projects"
 
-    template_name = "pages/portfolio.html"
+    def get_queryset(self):
+        """Seuls les projets publiés sont affichés publiquement."""
+        return (
+            Project.objects.filter(is_published=True)
+            .select_related("category")
+            .prefetch_related("technologies")
+        )

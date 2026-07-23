@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block title %}BBK Digital — Studio de conception de solutions numériques{% endblock %}
+{% block meta_description %}BBK Digital conçoit des sites web professionnels, des applications web et des outils numériques utiles, élégants et adaptés aux besoins réels.{% endblock %}
+
+{% block content %}
+<section class="hero" aria-labelledby="hero-title">
+    <h1 id="hero-title">Des solutions numériques utiles, élégantes et durables</h1>
+    <p class="hero-subtitle">
+        BBK Digital est un studio de conception de solutions numériques :
+        sites web professionnels, applications web, outils métiers et
+        automatisations, pensés pour répondre à des besoins réels.
+    </p>
+    <div class="hero-actions">
+        <a class="btn btn-primary" href="{% url 'contact:form' %}">Discuter d'un projet</a>
+        <a class="btn btn-secondary" href="{% url 'services:list' %}">Découvrir les services</a>
+    </div>
+</section>
+
+<section class="home-intro" aria-labelledby="intro-title">
+    <h2 id="intro-title">Un studio, pas une simple agence</h2>
+    <p>
+        BBK Digital ne se limite pas à la création de sites web. Le studio
+        conçoit des solutions complètes : applications web, outils métiers
+        sur mesure, automatisations et produits numériques destinés aux
+        familles, aux entreprises et au monde de l'éducation.
+    </p>
+    <p>
+        Chaque projet est mené avec la même exigence : simplicité, qualité
+        et utilité réelle, sans complexité inutile.
+    </p>
+</section>
+
+<section class="home-services" aria-labelledby="services-title">
+    <h2 id="services-title">Services</h2>
+    {% if services %}
+    <ul class="card-grid">
+        {% for service in services %}
+        <li class="card">
+            <article>
+                <h3>{{ service.title }}</h3>
+                <p>{{ service.short_description }}</p>
+            </article>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p class="empty-state">Les services seront présentés ici très prochainement.</p>
+    {% endif %}
+    <p class="section-link"><a href="{% url 'services:list' %}">Voir tous les services</a></p>
+</section>
+
+<section class="home-why" aria-labelledby="why-title">
+    <h2 id="why-title">Pourquoi choisir BBK Digital</h2>
+    <ul class="why-list">
+        <li>
+            <h3>Simplicité</h3>
+            <p>Des solutions claires, sans jargon ni complexité superflue.</p>
+        </li>
+        <li>
+            <h3>Qualité</h3>
+            <p>Un code propre, documenté et pensé pour durer plusieurs années.</p>
+        </li>
+        <li>
+            <h3>Accompagnement</h3>
+            <p>Un interlocuteur disponible, du premier échange à la maintenance.</p>
+        </li>
+        <li>
+            <h3>Innovation utile</h3>
+            <p>La technologie au service du besoin, jamais l'inverse.</p>
+        </li>
+    </ul>
+</section>
+
+<section class="home-portfolio" aria-labelledby="portfolio-title">
+    <h2 id="portfolio-title">Réalisations</h2>
+    {% if featured_projects %}
+    <ul class="card-grid">
+        {% for project in featured_projects %}
+        <li class="card">
+            <article>
+                {% if project.featured_image %}
+                <img src="{{ project.featured_image.url }}" alt="Aperçu du projet {{ project.title }}" loading="lazy">
+                {% endif %}
+                <h3>{{ project.title }}</h3>
+                <p>{{ project.short_description }}</p>
+            </article>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p class="empty-state">Les premières réalisations du studio seront publiées ici.</p>
+    {% endif %}
+    <p class="section-link"><a href="{% url 'portfolio:list' %}">Voir toutes les réalisations</a></p>
+</section>
+
+<section class="home-products" aria-labelledby="products-title">
+    <h2 id="products-title">Produits numériques</h2>
+    {% if featured_products %}
+    <ul class="card-grid">
+        {% for product in featured_products %}
+        <li class="card">
+            <article>
+                <h3>{{ product.name }}</h3>
+                <p>{{ product.short_description }}</p>
+            </article>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p class="empty-state">
+        BBK Digital prépare ses propres produits numériques, destinés aux
+        familles, aux entreprises et à l'éducation. Ils seront présentés ici.
+    </p>
+    {% endif %}
+    <p class="section-link"><a href="{% url 'products:list' %}">Découvrir les produits</a></p>
+</section>
+
+{% if testimonials %}
+<section class="home-testimonials" aria-labelledby="testimonials-title">
+    <h2 id="testimonials-title">Ils font confiance à BBK Digital</h2>
+    <ul class="card-grid">
+        {% for testimonial in testimonials %}
+        <li class="card">
+            <blockquote>{{ testimonial.content }}</blockquote>
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+{% endif %}
+
+<section class="home-cta" aria-labelledby="cta-title">
+    <h2 id="cta-title">Un projet, une idée, un besoin ?</h2>
+    <p>
+        Chaque projet commence par une conversation. Décrivez votre besoin,
+        BBK Digital vous répondra avec des solutions concrètes.
+    </p>
+    <a class="btn btn-primary" href="{% url 'contact:form' %}">Prendre contact</a>
+</section>
+{% endblock %}
