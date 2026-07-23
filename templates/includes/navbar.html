@@ -1,0 +1,53 @@
+{% comment %}Navigation principale du site. L'état actif est déduit du namespace de la vue courante.{% endcomment %}
+{% with current=request.resolver_match.view_name %}
+<header class="site-header">
+    <nav class="navbar" aria-label="Navigation principale">
+        <a class="navbar-brand" href="{% url 'core:home' %}">BBK Digital</a>
+
+        <button
+            class="navbar-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="navbar-menu"
+            aria-label="Ouvrir le menu de navigation"
+        >
+            <span class="navbar-toggle-bar" aria-hidden="true"></span>
+            <span class="navbar-toggle-bar" aria-hidden="true"></span>
+            <span class="navbar-toggle-bar" aria-hidden="true"></span>
+        </button>
+
+        <ul id="navbar-menu" class="navbar-menu">
+            <li>
+                <a href="{% url 'core:home' %}"
+                   class="navbar-link{% if current == 'core:home' %} is-active{% endif %}"
+                   {% if current == 'core:home' %}aria-current="page"{% endif %}>Accueil</a>
+            </li>
+            <li>
+                <a href="{% url 'services:list' %}"
+                   class="navbar-link{% if current == 'services:list' %} is-active{% endif %}"
+                   {% if current == 'services:list' %}aria-current="page"{% endif %}>Services</a>
+            </li>
+            <li>
+                <a href="{% url 'portfolio:list' %}"
+                   class="navbar-link{% if current == 'portfolio:list' %} is-active{% endif %}"
+                   {% if current == 'portfolio:list' %}aria-current="page"{% endif %}>Réalisations</a>
+            </li>
+            <li>
+                <a href="{% url 'products:list' %}"
+                   class="navbar-link{% if current == 'products:list' %} is-active{% endif %}"
+                   {% if current == 'products:list' %}aria-current="page"{% endif %}>Produits</a>
+            </li>
+            <li>
+                <a href="{% url 'core:about' %}"
+                   class="navbar-link{% if current == 'core:about' %} is-active{% endif %}"
+                   {% if current == 'core:about' %}aria-current="page"{% endif %}>À propos</a>
+            </li>
+            <li>
+                <a href="{% url 'contact:form' %}"
+                   class="navbar-link navbar-link-cta{% if current == 'contact:form' %} is-active{% endif %}"
+                   {% if current == 'contact:form' %}aria-current="page"{% endif %}>Contact</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+{% endwith %}

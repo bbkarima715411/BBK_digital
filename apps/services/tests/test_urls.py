@@ -1,4 +1,4 @@
-"""Tests de l'application services."""
+"""Tests des URLs de l'application services."""
 from django.test import TestCase
 from django.urls import reverse
 

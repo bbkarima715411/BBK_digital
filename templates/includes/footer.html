@@ -1,0 +1,37 @@
+{% now "Y" as current_year %}
+<footer class="site-footer">
+    <div class="footer-inner">
+        <section class="footer-brand" aria-label="À propos de BBK Digital">
+            <p class="footer-title">BBK Digital</p>
+            <p class="footer-tagline">
+                Studio de conception de solutions numériques utiles, élégantes
+                et adaptées aux besoins réels.
+            </p>
+        </section>
+
+        <nav class="footer-nav" aria-label="Liens principaux">
+            <p class="footer-heading">Navigation</p>
+            <ul>
+                <li><a href="{% url 'core:home' %}">Accueil</a></li>
+                <li><a href="{% url 'services:list' %}">Services</a></li>
+                <li><a href="{% url 'portfolio:list' %}">Réalisations</a></li>
+                <li><a href="{% url 'products:list' %}">Produits</a></li>
+                <li><a href="{% url 'core:about' %}">À propos</a></li>
+                <li><a href="{% url 'contact:form' %}">Contact</a></li>
+            </ul>
+        </nav>
+
+        <section class="footer-contact" aria-label="Contact et réseaux">
+            <p class="footer-heading">Contact</p>
+            {% include "includes/social_links.html" %}
+        </section>
+    </div>
+
+    <div class="footer-legal">
+        <ul>
+            <li><a href="{% url 'core:legal_notice' %}">Mentions légales</a></li>
+            <li><a href="{% url 'core:privacy_policy' %}">Politique de confidentialité</a></li>
+        </ul>
+        <p>&copy; {{ current_year }} BBK Digital. Tous droits réservés.</p>
+    </div>
+</footer>
